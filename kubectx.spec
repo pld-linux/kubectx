@@ -1,11 +1,11 @@
 Summary:	kubectx + kubens: Power tools for kubectl
 Name:		kubectx
-Version:	0.6.3
+Version:	0.9.5
 Release:	1
 License:	Apache v2.0
 Group:		Applications
 Source0:	https://github.com/ahmetb/kubectx/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	bc7054bf9bf62aacd0e404ded83f0b07
+# Source0-md5:	a621532b88d5568845d27c47b452e8f8
 URL:		https://github.com/ahmetb/kubectx
 Requires:	kubectl
 BuildArch:	noarch
@@ -16,6 +16,8 @@ Switch faster between clusters and namespaces in kubectl.
 
 %prep
 %setup -q
+
+%{__sed} -i -e '1s,^#!.*env bash,#!/bin/bash,' kubectx kubens
 
 %install
 rm -rf $RPM_BUILD_ROOT
